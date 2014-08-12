@@ -11,7 +11,13 @@ Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityE
 Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.089 seconds
+- Completed reload, in  0.062 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+UnloadTime: 0.345209 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 107.
+Total: 1.004840 ms (FindLiveObjects: 0.007463 ms CreateObjectMapping: 0.008863 ms MarkObjects: 0.134351 ms  DeleteObjects: 0.003731 ms)
+
