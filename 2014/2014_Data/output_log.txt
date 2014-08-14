@@ -1,29 +1,23 @@
-Initialize engine version: 4.3.4f1 (e444f76e01cd)
+Initialize engine version: 4.3.1f1 (cebd4d9b5122)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.3788]
-    Renderer: NVIDIA GeForce GTX 750 Ti
-    Vendor:   NVIDIA
-    VRAM:     1970 MB (via DXGI)
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+    Version:  Direct3D 9.0c [aticfx32.dll 8.17.10.1083]
+    Renderer: AMD Radeon HD 6970M
+    Vendor:   ATI
+    VRAM:     2030 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\UPnL\2014\2014\2014_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\UPnL\2014\2014\2014_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\UPnL\2014\2014\2014_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\UPnL\2014\2014\2014_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.032 seconds
+Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.052 seconds
 <RI> Initializing input.
 <RI> Input initialized.
-desktop: 1680x1050 60Hz; virtual: 3600x1080 at -1920,0
-UnloadTime: 0.201953 ms
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+UnloadTime: 0.757589 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 122.
-Total: 0.344739 ms (FindLiveObjects: 0.006641 ms CreateObjectMapping: 0.005131 ms MarkObjects: 0.069129 ms  DeleteObjects: 0.002113 ms)
-
-UnloadTime: 0.169049 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 97.
-Total: 0.323004 ms (FindLiveObjects: 0.003320 ms CreateObjectMapping: 0.004829 ms MarkObjects: 0.066412 ms  DeleteObjects: 0.008452 ms)
+Total: 1.896771 ms (FindLiveObjects: 0.018193 ms CreateObjectMapping: 0.020525 ms MarkObjects: 0.304621 ms  DeleteObjects: 0.009329 ms)
 

@@ -10,12 +10,26 @@
 using System;
 public class map
 {	
-	public int[,] mapparts= new int[15,15];
+	public int[,] mapparts = new int[15,15];
+	public int[] mine = new int[10];
+	public bool[] enemy =new bool[10];
+	public int playerx;
+	public int playery;
 	public map ()
 	{
-		mapparts [0, 0] = 2;
-		mapparts [0, 1] = 2;
-		mapparts [0, 2] = 1;
+		for (int y=0; y<15; y++) {
+			for (int x=0; x<15; x++) {
+				mapparts[y,x]=0;
+			}
+		}
+		for (int x=0; x<10; x++) {
+			mine[x]=0;
+		}
+		for (int x=0; x<10; x++) {
+			enemy[x]=false;
+		}
+		playerx = 0;
+		playery = 0;
 	}
 }
 
