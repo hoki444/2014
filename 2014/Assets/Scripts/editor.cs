@@ -11,6 +11,7 @@ public class editor : MonoBehaviour {
 	int nowmap=0;
 	float screenHeight;
 	public Texture[] maptexture= new Texture[10];
+	public Texture playert;
 	map dmap;
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,7 @@ public class editor : MonoBehaviour {
 		}
         if (GUI.Button(getRect(0.0, 0.41, 0.24, 0.12), ""))
         {
+			nowmap=-1;
         }
         if (GUI.Button(getRect(0.0, 0.527, 0.24, 0.12), ""))
         {
@@ -59,17 +61,27 @@ public class editor : MonoBehaviour {
 			for (int x=0; x<15; x++) {
 				GUI.DrawTexture(getRect(0.24+0.76/15*x, 0.85/15*y, 0.76/15, 0.85/15),maptexture[dmap.mapparts[y,x]]);
 				if(GUI.Button(getRect(0.24+0.76/15*x, 0.85/15*y, 0.76/15, 0.85/15),"")){
-					dmap.mapparts[y,x]=nowmap;
+					if(nowmap!=-1)
+						dmap.mapparts[y,x]=nowmap;
+					else{
+						dmap.playerx=x;
+						dmap.playery=y;
+					}
 				}
 			}
 		}
+		GUI.DrawTexture(getRect(0.24+0.76/15*dmap.playerx, 0.85/15*dmap.playery, 0.76/15, 0.85/15),playert);
 		for (int x=0; x<5; x++) {
 			GUI.Label (getRect(0.35+0.65/15*(3*x+1), 0.85, 0.65/15, 0.03), dmap.mine[x].ToString(), mgui);
 			if(GUI.Button(getRect(0.35+0.65/15*(3*x+2), 0.85, 0.65/15, 0.03),"")){
 				dmap.mine[x]++;
+				if (dmap.mine[x]>=100)
+					dmap.mine[x]=0;
 			}
 			if(GUI.Button(getRect(0.35+0.65/15*(3*x+2), 0.89, 0.65/15, 0.03),"")){
 				dmap.mine[x]--;
+				if(dmap.mine[x]<0)
+					dmap.mine[x]=99;
 			}
 		}
 	}

@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\mainscreen.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\editor.cs">
     <Files>
-      <File FileName="Assets\Scripts\mainscreen.cs" Line="29" Column="1" />
+      <File FileName="Assets\Scripts\mainscreen.cs" Line="19" Column="57" />
+      <File FileName="Assets\Scripts\editor.cs" Line="72" Column="19" />
+      <File FileName="Assets\Scripts\map.cs" Line="9" Column="64" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
