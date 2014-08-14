@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\editor.cs">
     <Files>
       <File FileName="Assets\Scripts\mainscreen.cs" Line="19" Column="57" />
-      <File FileName="Assets\Scripts\editor.cs" Line="72" Column="19" />
+      <File FileName="Assets\Scripts\editor.cs" Line="68" Column="22" />
       <File FileName="Assets\Scripts\map.cs" Line="9" Column="64" />
     </Files>
   </MonoDevelop.Ide.Workbench>

@@ -11,7 +11,9 @@ public class editor : MonoBehaviour {
 	int nowmap=0;
 	float screenHeight;
 	public Texture[] maptexture= new Texture[10];
+	public Texture[] enemytexture= new Texture[10];
 	public Texture playert;
+	public Texture check;
 	map dmap;
 	// Use this for initialization
 	void Start () {
@@ -54,9 +56,6 @@ public class editor : MonoBehaviour {
         {
             Application.LoadLevel("mainscreen");
         }
-        if (GUI.Button(getRect(0.84, 0.925, 0.16, 0.075), ""))
-        {
-        }
 		for (int y=0; y<15; y++) {
 			for (int x=0; x<15; x++) {
 				GUI.DrawTexture(getRect(0.24+0.76/15*x, 0.85/15*y, 0.76/15, 0.85/15),maptexture[dmap.mapparts[y,x]]);
@@ -82,6 +81,17 @@ public class editor : MonoBehaviour {
 				dmap.mine[x]--;
 				if(dmap.mine[x]<0)
 					dmap.mine[x]=99;
+			}
+		}
+		for (int x=0; x<5; x++) {
+			GUI.DrawTexture (getRect (0.35 + 0.65 / 10 * (2 * x), 0.93, 0.65 / 10, 0.06), enemytexture[x]);
+			if(dmap.enemy[x])
+				GUI.DrawTexture (getRect (0.35 + 0.65 / 10 * (2 * x + 1), 0.93, 0.65 / 10, 0.06), check);
+			if (GUI.Button (getRect (0.35 + 0.65 / 10 * (2 * x + 1), 0.93, 0.65 / 10, 0.06), "")) {
+				if(dmap.enemy[x])
+					dmap.enemy[x]=false;
+				else
+					dmap.enemy[x]=true;
 			}
 		}
 	}
