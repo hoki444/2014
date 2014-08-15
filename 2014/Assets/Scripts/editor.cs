@@ -132,6 +132,34 @@ public class editor : MonoBehaviour {
 						sw.WriteLine(dmap.playery.ToString());
 						sw.Close();
 					}
+					else{
+						StreamReader sr= new StreamReader("costommap\\"+(ind+1).ToString()+".txt");
+						string nextstring="";
+						char[] cstring= new char[100];
+						for (int y=0; y<15; y++) {
+							nextstring=sr.ReadLine();
+							cstring=nextstring.ToCharArray();
+							for (int x=0; x<15; x++) {
+								dmap.mapparts [y, x]=int.Parse(cstring[x].ToString());
+							}
+						}
+						nextstring=sr.ReadLine();
+						cstring=nextstring.ToCharArray();
+						for (int x=0; x<5; x++) {
+							dmap.mine[x]=int.Parse(cstring[2*x].ToString())*10+int.Parse(cstring[2*x+1].ToString());
+						}
+						nextstring=sr.ReadLine();
+						cstring=nextstring.ToCharArray();
+						for (int x=0; x<5; x++) {
+							if(cstring[x]=='0')
+								dmap.enemy[x]=false;
+							else
+								dmap.enemy[x]=true;
+						}
+						dmap.playerx=int.Parse(sr.ReadLine());
+						dmap.playery=int.Parse(sr.ReadLine());
+						sr.Close();
+					}
 				}
 			}
 			GUI.Label (getRect (0.38,0.7,0.25,0.07), "return", mgui);
