@@ -6,10 +6,10 @@ using System.Linq;
 
 
 public class editor : MonoBehaviour {
-	private Camera _camera;
-	float screenWidth;
-	int nowmap=0;
-	float screenHeight;
+    private Camera _camera;
+    float screenWidth;
+    float screenHeight;
+    int nowmap = 0;
 	public Texture[] maptexture= new Texture[10];
 	public Texture[] enemytexture= new Texture[10];
 	public Texture playert;
