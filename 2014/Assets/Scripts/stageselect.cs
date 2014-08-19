@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 public class stageselect : MonoBehaviour {
     private Camera _camera;
@@ -35,6 +38,10 @@ public class stageselect : MonoBehaviour {
                 if (GUI.Button(getRect(0.05+0.2*x, 0.3+0.2*y, 0.1, 0.1), (5 * y + x + 1).ToString()))
                 {
                     stage = 5 * y + x + 1;
+					StreamWriter sw= new StreamWriter("playinfo.txt");
+					sw.WriteLine(mode);
+					sw.WriteLine(stage.ToString());
+					sw.Close();
                     Application.LoadLevel("game");
                 }
             }
