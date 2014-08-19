@@ -30,7 +30,7 @@ public class stageselect : MonoBehaviour {
         if (GUI.Button(getRect(0.1, 0.1, 0.3, 0.1), "메인 맵"))
             mode = "main";
         if (GUI.Button(getRect(0.6, 0.1, 0.3, 0.1), "커스텀 맵"))
-            mode = "custom";
+            mode = "costom";
         for(int y=0;y<2;y++)
         {
             for (int x = 0; x < 5; x++)
