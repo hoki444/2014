@@ -11,6 +11,7 @@ public class game : MonoBehaviour {
 	string mode;
 	int stage;
 	map dmap;
+	character player;
 	public GameObject[] maps;
 	// Use this for initialization
 	void Start () {
@@ -54,6 +55,9 @@ public class game : MonoBehaviour {
 				Instantiate (maps [dmap.mapparts[y,x]], nextpoint, transform.rotation);
 			}
 		}
+		player = GameObject.Find ("character").GetComponent<character>();
+		player.positionx = dmap.playerx;
+		player.positiony = dmap.playery;
 	}
 	
 	// Update is called once per frame

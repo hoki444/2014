@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\stageselect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\character.cs">
     <Files>
+      <File FileName="Assets\Scripts\character.cs" Line="23" Column="1" />
       <File FileName="Assets\Scripts\game.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\editor.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\map.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\stageselect.cs" Line="33" Column="23" />
+      <File FileName="Assets\Scripts\character.cs" Line="14" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
