@@ -10,7 +10,7 @@ public class game : MonoBehaviour {
 	float screenHeight;
 	string mode;
 	int stage;
-	map dmap;
+	public map dmap;
 	character player;
 	public GameObject[] maps;
 	// Use this for initialization
