@@ -19,6 +19,9 @@ public class character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (dmap.mineparts [positiony, positionx] != -1) {
+			Application.LoadLevel ("mainscreen");
+		}
 		Vector3 nextpoint= new Vector3((float)(-3+0.668*positionx),(float)(4.67-0.668*positiony));
 		transform.position = nextpoint;
 		switch (direction) { 
@@ -90,6 +93,7 @@ public class character : MonoBehaviour {
 				if(positionx!=14&&dmap.mapparts[positiony,positionx+1]!=0){
 					nextpoint= new Vector3((float)(-3+0.668*(positionx+1)),(float)(4.67-0.668*positiony));
 					Instantiate (wm, nextpoint, transform.rotation);
+					dmap.mineparts[positiony,positionx+1]=0;
 				}
 				break;
 			}
@@ -98,6 +102,7 @@ public class character : MonoBehaviour {
 				if(positionx!=0&&dmap.mapparts[positiony,positionx-1]!=0){
 					nextpoint= new Vector3((float)(-3+0.668*(positionx-1)),(float)(4.67-0.668*positiony));
 					Instantiate (wm, nextpoint, transform.rotation);
+					dmap.mineparts[positiony,positionx-1]=0;
 				}
 				break;
 			}
@@ -106,6 +111,7 @@ public class character : MonoBehaviour {
 				if(positiony!=14&&dmap.mapparts[positiony+1,positionx]!=0){
 					nextpoint= new Vector3((float)(-3+0.668*positionx),(float)(4.67-0.668*(positiony+1)));
 					Instantiate (wm, nextpoint, transform.rotation);
+					dmap.mineparts[positiony+1,positionx]=0;
 				}
 				break;
 			}
@@ -114,6 +120,7 @@ public class character : MonoBehaviour {
 				if(positiony!=0&&dmap.mapparts[positiony-1,positionx]!=0){
 					nextpoint= new Vector3((float)(-3+0.668*positionx),(float)(4.67-0.668*(positiony-1)));
 					Instantiate (wm, nextpoint, transform.rotation);
+					dmap.mineparts[positiony-1,positionx]=0;
 				}
 				break;
 			}
