@@ -13,6 +13,7 @@ public class game : MonoBehaviour {
 	public map dmap;
 	character player;
 	public GameObject[] maps;
+	bool gameclear;
 	// Use this for initialization
 	void Start () {
 		_camera = Camera.main;
@@ -62,6 +63,15 @@ public class game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		gameclear = true;
+		for (int y=0; y<15; y++) {
+			for (int x=0; x<15; x++) {
+				if(dmap.mapparts[y,x]==2&&dmap.mineparts[y,x]==-1)
+					gameclear=false;
+			}
+		}
+		if (gameclear) {
+			Application.LoadLevel ("mainscreen");
+		}
 	}
 }
