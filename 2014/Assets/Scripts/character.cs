@@ -9,6 +9,7 @@ public class character : MonoBehaviour {
 	public Sprite[] motions;
 	SpriteRenderer sr;
 	map dmap;
+	public GameObject wm;
 	// Use this for initialization
 	void Start () {
 		sr = this.GetComponent<SpriteRenderer> ();
@@ -80,6 +81,46 @@ public class character : MonoBehaviour {
 			}
 			else if(direction!=0){
 				direction=0;
+			}
+		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			switch (direction) { 
+			case 0 :
+			{
+				if(positionx!=14&&dmap.mapparts[positiony,positionx+1]!=0){
+					nextpoint= new Vector3((float)(-3+0.668*(positionx+1)),(float)(4.67-0.668*positiony));
+					Instantiate (wm, nextpoint, transform.rotation);
+				}
+				break;
+			}
+			case 1 :
+			{
+				if(positionx!=0&&dmap.mapparts[positiony,positionx-1]!=0){
+					nextpoint= new Vector3((float)(-3+0.668*(positionx-1)),(float)(4.67-0.668*positiony));
+					Instantiate (wm, nextpoint, transform.rotation);
+				}
+				break;
+			}
+			case 2 :
+			{
+				if(positiony!=14&&dmap.mapparts[positiony+1,positionx]!=0){
+					nextpoint= new Vector3((float)(-3+0.668*positionx),(float)(4.67-0.668*(positiony+1)));
+					Instantiate (wm, nextpoint, transform.rotation);
+				}
+				break;
+			}
+			case 3 :
+			{
+				if(positiony!=0&&dmap.mapparts[positiony-1,positionx]!=0){
+					nextpoint= new Vector3((float)(-3+0.668*positionx),(float)(4.67-0.668*(positiony-1)));
+					Instantiate (wm, nextpoint, transform.rotation);
+				}
+				break;
+			}
+			default :
+			{
+				break;
+			}
 			}
 		}
 	}
