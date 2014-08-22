@@ -7,7 +7,8 @@ using System.Linq;
 public class stageselect : MonoBehaviour {
     private Camera _camera;
     float screenWidth;
-    float screenHeight;
+	float screenHeight;
+	public Texture target;
     string mode;
     int stage;
 	// Use this for initialization
@@ -27,6 +28,10 @@ public class stageselect : MonoBehaviour {
     {
         GUIStyle mgui = new GUIStyle();
         mgui.fontSize = 200;
+		if (mode == "main") 
+			GUI.DrawTexture (getRect(0.1, 0.1, 0.3, 0.1), target);
+		else
+			GUI.DrawTexture (getRect(0.6, 0.1, 0.3, 0.1), target);
         if (GUI.Button(getRect(0.1, 0.1, 0.3, 0.1), "메인 맵"))
             mode = "main";
         if (GUI.Button(getRect(0.6, 0.1, 0.3, 0.1), "커스텀 맵"))

@@ -11,19 +11,13 @@ Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityE
 Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Hsymbol\Documents\2014\2014\2014_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.088 seconds
+- Completed reload, in  0.076 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-UnloadTime: 0.735677 ms
+UnloadTime: 0.717950 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 104.
-Total: 2.981428 ms (FindLiveObjects: 0.017727 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.296230 ms  DeleteObjects: 0.010263 ms)
-
-UnloadTime: 0.639110 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 117.
-Total: 2.889061 ms (FindLiveObjects: 0.017260 ms CreateObjectMapping: 0.020059 ms MarkObjects: 0.294830 ms  DeleteObjects: 0.008397 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 127.
+Total: 3.033677 ms (FindLiveObjects: 0.020059 ms CreateObjectMapping: 0.021459 ms MarkObjects: 0.299495 ms  DeleteObjects: 0.009796 ms)
 
