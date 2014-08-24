@@ -49,11 +49,17 @@ public class editor : MonoBehaviour {
 			if (GUI.Button (getRect (0.155, 0.132, 0.065, 0.087), "")) {
 				nowmap = 2;
 			}
+			if (GUI.Button (getRect (0.015, 0.222, 0.065, 0.087), "")) {
+				nowmap = 3;
+			}
 			GUI.DrawTexture(getRect(0,0,1,1),editbase);
 			GUI.DrawTexture(getRect(0.015, 0.132, 0.065, 0.087),maptexture[0]);
 			GUI.DrawTexture(getRect(0.085, 0.132, 0.065, 0.087),maptexture[1]);
 			GUI.DrawTexture(getRect(0.155, 0.132, 0.065, 0.087),maptexture[2]);
-			if(nowmap>=0)
+			GUI.DrawTexture(getRect(0.015, 0.222, 0.065, 0.087),maptexture[3]);
+			if(nowmap>=3)
+				GUI.DrawTexture(getRect(0.015+0.07*(nowmap-3), 0.222, 0.065, 0.087),target);
+			else if(nowmap>=0)
 				GUI.DrawTexture(getRect(0.015+0.07*nowmap, 0.132, 0.065, 0.087),target);
 			else
 				GUI.DrawTexture(getRect (0.0, 0.41, 0.24, 0.12),target);

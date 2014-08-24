@@ -10,9 +10,11 @@ public class game : MonoBehaviour {
 	float screenHeight;
 	string mode;
 	int stage;
+	int turn;
 	public map dmap;
 	character player;
 	public GameObject[] maps;
+	public GameObject[] enemys;
 	bool gameclear;
 	public Texture rect;
 	public Texture[] minetexture= new Texture[10];
@@ -61,6 +63,7 @@ public class game : MonoBehaviour {
 		player = GameObject.Find ("character").GetComponent<character>();
 		player.positionx = dmap.playerx;
 		player.positiony = dmap.playery;
+		turn = dmap.turn;
 	}
 	
 	// Update is called once per frame
@@ -75,6 +78,19 @@ public class game : MonoBehaviour {
 		if (gameclear) {
 			Application.LoadLevel ("mainscreen");
 		}
+		if (turn != dmap.turn) {
+			turn=dmap.turn;
+		if(dmap.turn%5==0){
+				for (int y=0; y<15; y++) {
+					for (int x=0; x<15; x++) {
+						if(dmap.mapparts[y,x]==3){
+							Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * x), (float)(4.67 - 0.668 * y));
+							Instantiate(enemys[0],nextpoint,transform.rotation);
+						}
+					}
+					}
+				}
+		}
 	}
 	void OnGUI()
 	{
@@ -86,6 +102,8 @@ public class game : MonoBehaviour {
 			GUI.Label (getRect (0.125,0.2+0.07*ind,0.1,0.1), "0/"+dmap.mine[ind].ToString() , mgui);
 		}
 		GUI.Label (getRect (0.025,0.1,0.1,0.1), "현재 : ", mgui);
+		
+		GUI.Label (getRect (0.025,0.55,0.1,0.1), "턴 : "+dmap.turn.ToString(), mgui);
 		GUI.DrawTexture (getRect(0.125, 0.10, 0.07, 0.07),minetexture[dmap.nowmine]);
 		if (GUI.Button(getRect(0.025, 0.8, 0.2, 0.1), "돌아가기"))
 			Application.LoadLevel("mainscreen");

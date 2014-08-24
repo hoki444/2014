@@ -17,6 +17,7 @@ public class map
 	public int playerx;
 	public int playery;
 	public int nowmine;
+	public int turn;
 	public map ()
 	{
 		for (int y=0; y<15; y++) {
@@ -32,6 +33,7 @@ public class map
 		playerx = 0;
 		playery = 0;
 		nowmine = 0;
+		turn = 0;
 	}
 }
 
