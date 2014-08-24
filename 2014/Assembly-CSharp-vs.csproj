@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\game.cs" />
      <Compile Include="Assets\Scripts\mainscreen.cs" />
      <Compile Include="Assets\Scripts\map.cs" />
+     <Compile Include="Assets\Scripts\mine.cs" />
      <Compile Include="Assets\Scripts\stageselect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

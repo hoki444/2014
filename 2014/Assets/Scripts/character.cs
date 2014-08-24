@@ -10,8 +10,9 @@ public class character : MonoBehaviour {
 	SpriteRenderer sr;
 	map dmap;
 	int time;
-	string state;
-	public GameObject wm;
+	Object nowobject;
+	public string state;
+	public GameObject[] mines;
 	// Use this for initialization
 	void Start () {
 		sr = this.GetComponent<SpriteRenderer> ();
@@ -24,7 +25,9 @@ public class character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (dmap.mineparts [positiony, positionx] != -1) {
-			Application.LoadLevel ("mainscreen");
+			state="dead";
+			GameObject.Find(positionx.ToString()+"mine"+positiony.ToString()).GetComponent<mine>().explosiontrigger();
+			dmap.mineparts [positiony, positionx]=-1;
 		}
 		Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * positionx), (float)(4.67 - 0.668 * positiony));
 		if (state == "walk") {
@@ -137,8 +140,11 @@ public class character : MonoBehaviour {
 						time=0;
 						dmap.turn++;
 						nextpoint = new Vector3 ((float)(-3 + 0.668 * (positionx + 1)), (float)(4.67 - 0.668 * positiony));
-						Instantiate (wm, nextpoint, transform.rotation);
-						dmap.mineparts [positiony, positionx + 1] = 0;
+						nowobject = Instantiate (mines[dmap.nowmine], nextpoint, transform.rotation);
+						nowobject.name= (positionx+1).ToString()+"mine"+positiony.ToString();
+						GameObject.Find((positionx+1).ToString()+"mine"+positiony.ToString()).GetComponent<mine>().positionx=positionx+1;
+						GameObject.Find((positionx+1).ToString()+"mine"+positiony.ToString()).GetComponent<mine>().positiony=positiony;
+						dmap.mineparts [positiony, positionx + 1] = dmap.nowmine;
 					}
 					break;
 				}
@@ -149,8 +155,11 @@ public class character : MonoBehaviour {
 						time=0;
 						dmap.turn++;
 						nextpoint = new Vector3 ((float)(-3 + 0.668 * (positionx - 1)), (float)(4.67 - 0.668 * positiony));
-						Instantiate (wm, nextpoint, transform.rotation);
-						dmap.mineparts [positiony, positionx - 1] = 0;
+						nowobject = Instantiate (mines[dmap.nowmine], nextpoint, transform.rotation);
+						nowobject.name= (positionx-1).ToString()+"mine"+positiony.ToString();
+						GameObject.Find((positionx-1).ToString()+"mine"+positiony.ToString()).GetComponent<mine>().positionx=positionx-1;
+						GameObject.Find((positionx-1).ToString()+"mine"+positiony.ToString()).GetComponent<mine>().positiony=positiony;
+						dmap.mineparts [positiony, positionx - 1] = dmap.nowmine;
 					}
 					break;
 				}
@@ -161,8 +170,11 @@ public class character : MonoBehaviour {
 						time=0;
 						dmap.turn++;
 						nextpoint = new Vector3 ((float)(-3 + 0.668 * positionx), (float)(4.67 - 0.668 * (positiony + 1)));
-						Instantiate (wm, nextpoint, transform.rotation);
-						dmap.mineparts [positiony + 1, positionx] = 0;
+						nowobject = Instantiate (mines[dmap.nowmine], nextpoint, transform.rotation);
+						nowobject.name= positionx.ToString()+"mine"+(positiony+1).ToString();
+						GameObject.Find(positionx.ToString()+"mine"+(positiony+1).ToString()).GetComponent<mine>().positionx=positionx;
+						GameObject.Find(positionx.ToString()+"mine"+(positiony+1).ToString()).GetComponent<mine>().positiony=positiony+1;
+						dmap.mineparts [positiony + 1, positionx] = dmap.nowmine;
 					}
 					break;
 				}
@@ -173,8 +185,11 @@ public class character : MonoBehaviour {
 						time=0;
 						dmap.turn++;
 						nextpoint = new Vector3 ((float)(-3 + 0.668 * positionx), (float)(4.67 - 0.668 * (positiony - 1)));
-						Instantiate (wm, nextpoint, transform.rotation);
-						dmap.mineparts [positiony - 1, positionx] = 0;
+						nowobject = Instantiate (mines[dmap.nowmine], nextpoint, transform.rotation);
+						nowobject.name= positionx.ToString()+"mine"+(positiony-1).ToString();
+						GameObject.Find(positionx.ToString()+"mine"+(positiony-1).ToString()).GetComponent<mine>().positionx=positionx;
+						GameObject.Find(positionx.ToString()+"mine"+(positiony-1).ToString()).GetComponent<mine>().positiony=positiony-1;
+						dmap.mineparts [positiony - 1, positionx] = dmap.nowmine;
 					}
 					break;
 				}

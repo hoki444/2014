@@ -16,7 +16,10 @@ public class game : MonoBehaviour {
 	public GameObject[] maps;
 	public GameObject[] enemys;
 	bool gameclear;
+	bool gameover;
 	public Texture rect;
+	public Texture clear;
+	public Texture fail;
 	public Texture[] minetexture= new Texture[10];
 	// Use this for initialization
 	void Start () {
@@ -76,7 +79,11 @@ public class game : MonoBehaviour {
 			}
 		}
 		if (gameclear) {
-			Application.LoadLevel ("mainscreen");
+			player.state="clear";
+		}
+		if (player.state == "dead") {
+			gameover = true;
+			GameObject.Destroy(GameObject.Find ("character"));
 		}
 		if (turn != dmap.turn) {
 			turn=dmap.turn;
@@ -88,8 +95,8 @@ public class game : MonoBehaviour {
 							Instantiate(enemys[0],nextpoint,transform.rotation);
 						}
 					}
-					}
 				}
+			}
 		}
 	}
 	void OnGUI()
@@ -107,6 +114,10 @@ public class game : MonoBehaviour {
 		GUI.DrawTexture (getRect(0.125, 0.10, 0.07, 0.07),minetexture[dmap.nowmine]);
 		if (GUI.Button(getRect(0.025, 0.8, 0.2, 0.1), "돌아가기"))
 			Application.LoadLevel("mainscreen");
+		if(gameclear)
+			GUI.DrawTexture (getRect(0.375, 0.40, 0.5, 0.2),clear);
+		if(gameover)
+			GUI.DrawTexture (getRect(0.375, 0.40, 0.5, 0.2),fail);
 	}
 	Rect getRect(double x, double y, double w, double h)
 	{
