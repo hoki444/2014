@@ -1,9 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\stageselect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\character.cs">
     <Files>
-      <File FileName="Assets\Scripts\stageselect.cs" Line="8" Column="28" />
-      <File FileName="Assets\Scripts\editor.cs" Line="20" Column="26" />
+      <File FileName="Assets\Scripts\game.cs" Line="77" Column="4" />
+      <File FileName="Assets\Scripts\stageselect.cs" Line="57" Column="43" />
+      <File FileName="Assets\Scripts\editor.cs" Line="15" Column="2" />
+      <File FileName="Assets\Scripts\map.cs" Line="34" Column="15" />
+      <File FileName="Assets\Scripts\character.cs" Line="146" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

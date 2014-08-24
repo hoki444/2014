@@ -14,6 +14,8 @@ public class game : MonoBehaviour {
 	character player;
 	public GameObject[] maps;
 	bool gameclear;
+	public Texture rect;
+	public Texture[] minetexture= new Texture[10];
 	// Use this for initialization
 	void Start () {
 		_camera = Camera.main;
@@ -73,5 +75,23 @@ public class game : MonoBehaviour {
 		if (gameclear) {
 			Application.LoadLevel ("mainscreen");
 		}
+	}
+	void OnGUI()
+	{
+		GUIStyle mgui = new GUIStyle();
+		mgui.fontSize = 35;
+		GUI.DrawTexture (getRect(0, 0, 0.25, 1),rect);
+		for (int ind=0; ind<5; ind++) {
+			GUI.DrawTexture (getRect(0.025, 0.2+0.07*ind, 0.07, 0.07),minetexture[ind]);
+			GUI.Label (getRect (0.125,0.2+0.07*ind,0.1,0.1), "0/"+dmap.mine[ind].ToString() , mgui);
+		}
+		GUI.Label (getRect (0.025,0.1,0.1,0.1), "현재 : ", mgui);
+		GUI.DrawTexture (getRect(0.125, 0.10, 0.07, 0.07),minetexture[dmap.nowmine]);
+		if (GUI.Button(getRect(0.025, 0.8, 0.2, 0.1), "돌아가기"))
+			Application.LoadLevel("mainscreen");
+	}
+	Rect getRect(double x, double y, double w, double h)
+	{
+		return new Rect((float)x * screenWidth, (float)y * screenHeight, (float)w * screenWidth, (float)h * screenHeight);
 	}
 }

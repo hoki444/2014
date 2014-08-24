@@ -130,5 +130,20 @@ public class character : MonoBehaviour {
 			}
 			}
 		}
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+			dmap.nowmine=0;
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha2)) {
+			dmap.nowmine=1;
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			dmap.nowmine=2;
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha4)) {
+			dmap.nowmine=3;
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha5)) {
+			dmap.nowmine=4;
+		}
 	}
 }

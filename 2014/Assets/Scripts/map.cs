@@ -16,6 +16,7 @@ public class map
 	public bool[] enemy =new bool[10];
 	public int playerx;
 	public int playery;
+	public int nowmine;
 	public map ()
 	{
 		for (int y=0; y<15; y++) {
@@ -30,6 +31,7 @@ public class map
 		}
 		playerx = 0;
 		playery = 0;
+		nowmine = 0;
 	}
 }
 
