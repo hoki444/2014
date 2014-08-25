@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mikudayo : enemy {
 	public override void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine) {
-		if (state != "dead") {
+		if (state == "stand") {
 			move ();
 			string tempstate=state;
 			state="attack";
@@ -13,6 +13,11 @@ public class mikudayo : enemy {
 			for (int ind=0; ind<nowmine; ind++) {
 				if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
 					mines [ind].explosiontrigger();
+				}
+			}
+			for (int ind=0; ind<nowenemy; ind++) {
+				if (positionx == enemies [ind].positionx && positiony == enemies [ind].positiony) {
+					enemies [ind].knuckback (direction,2,mines,nowmine);
 				}
 			}
 		}
@@ -47,5 +52,7 @@ public class mikudayo : enemy {
 			}
 				}
 		player.knuckback (direction,3);
+	}
+	public override void knuckback(int direction,int size, mine[] mines, int nowmine){
 	}
 }

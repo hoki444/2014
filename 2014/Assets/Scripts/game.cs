@@ -169,6 +169,21 @@ public class game : MonoBehaviour {
 			dmap.minenumber[2]++;
 		}
 	}
+	public void biexplosion(){
+		for (int ind2=0; ind2<nowenemy; ind2++) {
+			if (enemies [ind2] is bi) {
+				int[,] explosions = new int[9, 2];
+				for (int y=0; y<3; y++) {
+					for (int x=0; x<3; x++) {
+						explosions [3 * y + x, 0] = enemies [ind2].positionx + x - 1;
+						explosions [3 * y + x, 1] = enemies [ind2].positiony + y - 1;
+					}
+				}
+				deleteallunit (explosions,9);
+				ind2=-1;
+			}
+		}
+	}
 	public void deleteallunit(int[,] explosions,int explosionnum){
 		for(int ind=0; ind<explosionnum; ind++){
 			Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * explosions[ind,0]), (float)(4.67 - 0.668 * explosions[ind,1]));
@@ -197,6 +212,13 @@ public class game : MonoBehaviour {
 		for(int ind=0;ind<nowenemy;ind++){
 			if(player.positionx==enemies[ind].positionx&&player.positiony==enemies[ind].positiony){
 				enemies[ind].attack();
+			}
+		}
+	}
+	public void knuckresult(){
+		for(int ind=0;ind<nowmine;ind++){
+			if(mines[ind].state!="explosion"&&player.positionx==mines[ind].positionx&&player.positiony==mines[ind].positiony){
+				mines[ind].explosiontrigger();
 			}
 		}
 	}
@@ -231,7 +253,8 @@ public class game : MonoBehaviour {
 						if(dmap.mapparts[y,x]==3){
 							Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * x), (float)(4.67 - 0.668 * y));
 							if(nowenemy<20){
-								nowobject = Instantiate(enemys[0],nextpoint,transform.rotation);
+								int nextenemy=getnumber();
+								nowobject = Instantiate(enemys[nextenemy],nextpoint,transform.rotation);
 								nowobject.name="enemy"+enemynumber.ToString();
 								enemies[nowenemy]=GameObject.Find ("enemy"+enemynumber.ToString()).GetComponent<enemy>();
 								enemies[nowenemy].positionx=x;
@@ -244,6 +267,14 @@ public class game : MonoBehaviour {
 				}
 			}
 		}
+	}
+	int getnumber(){
+		int result = 0;
+		result = Random.Range (0, 5);
+		if (dmap.enemy [result])
+			return result;
+		else
+			return getnumber ();
 	}
 	Rect getRect(double x, double y, double w, double h)
 	{

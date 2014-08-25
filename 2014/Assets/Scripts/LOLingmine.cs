@@ -105,11 +105,7 @@ public class LOLingmine : mine {
 			}
 			moveturn=0;
 		}
-		for(int ind=0;ind<nowenemy;ind++){
-			if(positionx==enemies[ind].positionx&&positiony==enemies[ind].positiony){
-				explosiontrigger();
-			}
-		}
+		enemycheck (enemies,nowenemy);
 	}
 	public override void explosiontrigger(){
 		state="explosion";

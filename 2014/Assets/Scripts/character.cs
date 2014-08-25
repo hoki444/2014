@@ -290,6 +290,7 @@ public class character : MonoBehaviour {
 				break;
 			}
 			}
+			mygame.knuckresult ();
 		}
 	}
 }

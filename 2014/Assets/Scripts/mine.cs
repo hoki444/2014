@@ -17,9 +17,15 @@ public class mine : MonoBehaviour {
 
 	}
 	public virtual void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
+		enemycheck (enemies,nowenemy);
+	}
+	public void enemycheck(enemy[] enemies,int nowenemy){
 		for(int ind=0;ind<nowenemy;ind++){
 			if(positionx==enemies[ind].positionx&&positiony==enemies[ind].positiony){
-				explosiontrigger();
+				if(enemies[ind] is bi)
+					bi.mineeatcounter++;
+				else
+					explosiontrigger();
 			}
 		}
 	}

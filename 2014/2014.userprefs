@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\character.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\mine.cs">
     <Files>
-      <File FileName="Assets\Scripts\mikudayo.cs" Line="26" Column="11" />
+      <File FileName="Assets\Scripts\mikudayo.cs" Line="57" Column="2" />
       <File FileName="Assets\Scripts\LOLingmine.cs" Line="154" Column="21" />
       <File FileName="Assets\Scripts\mine.cs" Line="36" Column="21" />
-      <File FileName="Assets\Scripts\character.cs" Line="38" Column="4" />
-      <File FileName="Assets\Scripts\game.cs" Line="13" Column="9" />
-      <File FileName="Assets\Scripts\mikumiku.cs" Line="77" Column="21" />
-      <File FileName="Assets\Scripts\enemy.cs" Line="50" Column="5" />
+      <File FileName="Assets\Scripts\character.cs" Line="293" Column="22" />
+      <File FileName="Assets\Scripts\game.cs" Line="208" Column="4" />
+      <File FileName="Assets\Scripts\mikumiku.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemy.cs" Line="174" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

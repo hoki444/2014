@@ -9,6 +9,7 @@ public class enemy : MonoBehaviour {
 	public string state;
 	public int time;
 	public map dmap;
+	public int stunturn;
 	// Use this for initialization
 	void Start () {
 		direction = 0;
@@ -59,15 +60,18 @@ public class enemy : MonoBehaviour {
 		}
 	}
 	public virtual void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine) {
-		if (state != "dead") {
+		if (state == "stand") {
 			move ();
 			if (positionx == player.positionx && positiony == player.positiony)
 				attack ();
 			for (int ind=0; ind<nowmine; ind++) {
 				if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
-					mines [ind].explosiontrigger();
+					mines [ind].explosiontrigger ();
 				}
 			}
+		} else if (state == "stun") {
+			if(stunturn==dmap.turn)
+				state="stand";
 		}
 	}
 	public virtual void move(){
@@ -113,5 +117,65 @@ public class enemy : MonoBehaviour {
 	}
 	public virtual void attack(){
 		player.state="dead";
+	}
+	public virtual void knuckback(int direction,int size, mine[] mines, int nowmine){
+		for (int ind=0; ind<size; ind++) {
+			switch (direction) { 
+			case 0:
+			{
+				if (positionx != 14 && dmap.mapparts [positiony, positionx + 1] != 0) {
+					positionx++;
+				}
+				else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+1;
+				}
+				break;
+			}
+			case 1:
+			{
+				if (positionx != 0 && dmap.mapparts [positiony, positionx - 1] != 0) {
+					positionx--;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+1;
+				}
+				break;
+			}
+			case 2:
+			{
+				if (positiony != 14 && dmap.mapparts [positiony + 1, positionx] != 0) {
+					positiony++;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+1;
+				}
+				break;
+			}
+			case 3:
+			{
+				if (positiony != 0 && dmap.mapparts [positiony - 1, positionx] != 0) {
+					positiony--;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+1;
+				}
+				break;
+			}
+			default :
+			{
+				break;
+			}
+			}
+			for (int ind2=0; ind2<nowmine; ind2++) {
+				if (positionx == mines [ind2].positionx && positiony == mines [ind2].positiony) {
+					mines [ind2].explosiontrigger ();
+				}
+			}
+		}
 	}
 }
