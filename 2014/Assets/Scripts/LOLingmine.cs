@@ -150,4 +150,9 @@ public class LOLingmine : mine {
 		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,3);
 		GameObject.Destroy(this.gameObject);
 	}
+	public override void delete(){
+		state="explosion";
+		dmap.minenumber [1]--;
+		GameObject.Destroy(this.gameObject);
+	}
 }

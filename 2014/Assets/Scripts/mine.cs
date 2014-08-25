@@ -32,4 +32,9 @@ public class mine : MonoBehaviour {
 		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,1);
 		GameObject.Destroy(this.gameObject);
 	}
+	public virtual void delete(){
+		state="explosion";
+		dmap.minenumber [0]--;
+		GameObject.Destroy(this.gameObject);
+	}
 }

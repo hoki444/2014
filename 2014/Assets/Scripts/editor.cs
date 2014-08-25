@@ -90,7 +90,7 @@ public class editor : MonoBehaviour {
 			}
 			GUI.DrawTexture (getRect (0.24 + 0.76 / 15 * dmap.playerx, 0.85 / 15 * dmap.playery, 0.76 / 15, 0.85 / 15), playert);
 			for (int x=0; x<5; x++) {
-				GUI.DrawTexture (getRect (0.35 + 0.65 / 15 * (3 * x), 0.85, 0.65 / 15, 0.06), minetexture [x]);
+				GUI.DrawTexture (getRect (0.35 + 0.65 / 15 * (3 * x), 0.856, 0.65 / 15, 0.06), minetexture [x]);
 				GUI.Label (getRect (0.35 + 0.65 / 15 * (3 * x + 1), 0.85, 0.65 / 15, 0.06), dmap.mine [x].ToString (), mgui);
 				GUI.DrawTexture (getRect (0.35 + 0.65 / 15 * (3 * x + 2), 0.85, 0.65 / 15, 0.03), up);
 				if (GUI.Button (getRect (0.35 + 0.65 / 15 * (3 * x + 2), 0.85, 0.65 / 15, 0.03), "")) {

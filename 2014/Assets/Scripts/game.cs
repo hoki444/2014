@@ -102,7 +102,7 @@ public class game : MonoBehaviour {
 		GUI.Label (getRect (0.025,0.1,0.1,0.1), "현재 : ", mgui);
 		
 		GUI.Label (getRect (0.025,0.55,0.1,0.1), "턴 : "+dmap.turn.ToString(), mgui);
-		GUI.DrawTexture (getRect(0.125, 0.10, 0.07, 0.07),minetexture[dmap.nowmine]);
+		GUI.DrawTexture (getRect(0.135, 0.10, 0.07, 0.07),minetexture[dmap.nowmine]);
 		if (GUI.Button(getRect(0.025, 0.8, 0.2, 0.1), "돌아가기"))
 			Application.LoadLevel("mainscreen");
 		if(gameclear)
@@ -146,6 +146,29 @@ public class game : MonoBehaviour {
 			dmap.minenumber[dmap.nowmine]++;
 		}
 	}
+	public void changemine(int positionx,int positiony){
+		Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * positionx), (float)(4.67 - 0.668 * positiony));
+		for(int ind=0;ind<nowmine;ind++){
+			if(positionx==mines[ind].positionx&&positiony==mines[ind].positiony){
+				mines[ind].delete();
+				for(int ind2=ind;ind2<nowmine-1;ind2++){
+					mines[ind2]=mines[ind2+1];
+				}
+				nowmine--;
+				ind--;
+			}
+		}
+		if(nowmine<1000){
+			nowobject = Instantiate (mineobjects[2], nextpoint, transform.rotation);
+			nowobject.name="mine"+minenumber.ToString();
+			mines[nowmine]=GameObject.Find ("mine"+minenumber.ToString()).GetComponent<mine>();
+			mines[nowmine].positionx=positionx;
+			mines[nowmine].positiony=positiony;
+			nowmine++;
+			minenumber++;
+			dmap.minenumber[2]++;
+		}
+	}
 	public void deleteallunit(int[,] explosions,int explosionnum){
 		for(int ind=0; ind<explosionnum; ind++){
 			Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * explosions[ind,0]), (float)(4.67 - 0.668 * explosions[ind,1]));
@@ -167,7 +190,7 @@ public class game : MonoBehaviour {
 	}
 	public void moveresult(){
 		for(int ind=0;ind<nowmine;ind++){
-			if(player.positionx==mines[ind].positionx&&player.positiony==mines[ind].positiony){
+			if(mines[ind].state!="explosion"&&player.positionx==mines[ind].positionx&&player.positiony==mines[ind].positiony){
 				mines[ind].explosiontrigger();
 			}
 		}
@@ -181,7 +204,7 @@ public class game : MonoBehaviour {
 		if (turn != dmap.turn) {
 			turn=dmap.turn;
 			for(int ind=0;ind<nowmine;ind++){
-				if(mines[ind]==null){
+				if(mines[ind]==null||mines[ind].state=="explosion"){
 					for(int ind2=ind;ind2<nowmine-1;ind2++){
 						mines[ind2]=mines[ind2+1];
 					}
@@ -192,7 +215,7 @@ public class game : MonoBehaviour {
 				mines[ind].turnAI(enemies,mines,nowenemy,nowmine);
 			}
 			for(int ind=0;ind<nowenemy;ind++){
-				if(enemies[ind]==null){
+				if(enemies[ind]==null&&enemies[ind].state=="dead"){
 					for(int ind2=ind;ind2<nowenemy-1;ind2++){
 						enemies[ind2]=enemies[ind2+1];
 					}
