@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\LOLingmine.cs" />
      <Compile Include="Assets\Scripts\character.cs" />
      <Compile Include="Assets\Scripts\editor.cs" />
      <Compile Include="Assets\Scripts\enemy.cs" />

@@ -151,11 +151,11 @@ public class game : MonoBehaviour {
 			Vector3 nextpoint = new Vector3 ((float)(-3 + 0.668 * explosions[ind,0]), (float)(4.67 - 0.668 * explosions[ind,1]));
 			Instantiate(explosion,nextpoint,transform.rotation);
 			for(int ind2=0;ind2<nowenemy;ind2++){
-				if(explosions[ind,0]==enemies[ind].positionx&&explosions[ind,1]==enemies[ind].positiony){
-					enemies[ind].state="dead";
-					GameObject.Destroy(enemies[ind].gameObject);
+				if(explosions[ind,0]==enemies[ind2].positionx&&explosions[ind,1]==enemies[ind2].positiony){
+					enemies[ind2].state="dead";
+					GameObject.Destroy(enemies[ind2].gameObject);
 					for(int ind3=ind2;ind3<nowenemy-1;ind3++){
-						enemies[ind2]=enemies[ind2+1];
+						enemies[ind3]=enemies[ind3+1];
 					}
 					nowenemy--;
 					ind2--;

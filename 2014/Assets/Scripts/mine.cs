@@ -5,7 +5,7 @@ public class mine : MonoBehaviour {
 	public int positionx;
 	public int positiony;
 	public string state;
-	map dmap;
+	public map dmap;
 	// Use this for initialization
 	void Start () {
 		state = "mine";
@@ -16,14 +16,14 @@ public class mine : MonoBehaviour {
 	void Update () {
 
 	}
-	public void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
+	public virtual void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
 		for(int ind=0;ind<nowenemy;ind++){
 			if(positionx==enemies[ind].positionx&&positiony==enemies[ind].positiony){
 				explosiontrigger();
 			}
 		}
 	}
-	public void explosiontrigger(){
+	public virtual void explosiontrigger(){
 		state="explosion";
 		dmap.minenumber [0]--;
 		int[,] explosions= new int[1,2];
