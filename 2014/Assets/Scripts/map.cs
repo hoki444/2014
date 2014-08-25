@@ -11,8 +11,8 @@ using System;
 public class map
 {	
 	public int[,] mapparts = new int[15,15];
-	public int[,] mineparts = new int[15,15];
 	public int[] mine = new int[10];
+	public int[] minenumber = new int[10];
 	public bool[] enemy =new bool[10];
 	public int playerx;
 	public int playery;
@@ -23,11 +23,11 @@ public class map
 		for (int y=0; y<15; y++) {
 			for (int x=0; x<15; x++) {
 				mapparts[y,x]=0;
-				mineparts[y,x]=-1;
 			}
 		}
 		for (int x=0; x<10; x++) {
 			mine[x]=0;
+			minenumber[x]=0;
 			enemy[x]=false;
 		}
 		playerx = 0;

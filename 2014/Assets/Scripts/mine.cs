@@ -4,29 +4,32 @@ using System.Collections;
 public class mine : MonoBehaviour {
 	public int positionx;
 	public int positiony;
-	public Sprite[] explosion=new Sprite[10];
-	SpriteRenderer sr;
-	string state;
-	int tick;
+	public string state;
+	map dmap;
 	// Use this for initialization
 	void Start () {
-		sr = transform.GetComponent<SpriteRenderer> ();
-		tick = 0;
-		positionx = 0;
-		positiony = 0;
 		state = "mine";
+		dmap = GameObject.Find ("Main Camera").GetComponent<game> ().dmap;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (state == "explosion") {
-			sr.sprite=explosion[tick];
-			tick++;
-			if(tick==10)
-				GameObject.Destroy(this.gameObject);
+
+	}
+	public void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
+		for(int ind=0;ind<nowenemy;ind++){
+			if(positionx==enemies[ind].positionx&&positiony==enemies[ind].positiony){
+				explosiontrigger();
+			}
 		}
 	}
 	public void explosiontrigger(){
-		state = "explosion";
+		state="explosion";
+		dmap.minenumber [0]--;
+		int[,] explosions= new int[1,2];
+		explosions [0, 0] = positionx;
+		explosions [0, 1] = positiony;
+		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,1);
+		GameObject.Destroy(this.gameObject);
 	}
 }
