@@ -10,7 +10,7 @@ public class game : MonoBehaviour {
 	float screenHeight;
 	string mode;
 	int stage;
-	int turn;
+	public int turn;
 	public map dmap;
 	character player;
 	enemy[] enemies;

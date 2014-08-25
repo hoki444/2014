@@ -9,7 +9,8 @@ public class character : MonoBehaviour {
 	public Sprite[] motions;
 	SpriteRenderer sr;
 	map dmap;
-	int time;
+	public int time;
+	public int stunturn;
 	Object nowobject;
 	public string state;
 	Vector3 nextpoint;
@@ -33,7 +34,8 @@ public class character : MonoBehaviour {
 			getinput();
 		else
 			showmotion();
-		mygame.moveresult ();
+		if(mygame.turn!=dmap.turn)
+			mygame.moveresult ();
 	}
 	void getnextposition(){		
 		nextpoint = new Vector3 ((float)(-3 + 0.668 * positionx), (float)(4.67 - 0.668 * positiony));
@@ -222,6 +224,71 @@ public class character : MonoBehaviour {
 			time++;
 			if(time>10){
 				state="stand";
+			}
+		}
+		else if (state == "stun")
+		{
+			time++;
+			if(time==10&&dmap.turn==stunturn)
+				state="stand";
+			if(time>20){
+				dmap.turn++;
+				time=0;
+			}
+		}
+	}
+	public void knuckback(int direction,int size){
+		for (int ind=0; ind<size; ind++) {
+			switch (direction) { 
+			case 0:
+			{
+				if (positionx != 14 && dmap.mapparts [positiony, positionx + 1] != 0) {
+					positionx++;
+				}
+				else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+2;
+				}
+				break;
+			}
+			case 1:
+			{
+				if (positionx != 0 && dmap.mapparts [positiony, positionx - 1] != 0) {
+					positionx--;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+2;
+				}
+				break;
+			}
+			case 2:
+			{
+				if (positiony != 14 && dmap.mapparts [positiony + 1, positionx] != 0) {
+					positiony++;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+2;
+				}
+				break;
+			}
+			case 3:
+			{
+				if (positiony != 0 && dmap.mapparts [positiony - 1, positionx] != 0) {
+					positiony--;
+				}else{
+					state="stun";
+					time=0;
+					stunturn=dmap.turn+2;
+				}
+				break;
+			}
+			default :
+			{
+				break;
+			}
 			}
 		}
 	}

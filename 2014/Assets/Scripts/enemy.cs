@@ -4,11 +4,11 @@ using System.Collections;
 public class enemy : MonoBehaviour {
 	public int positionx;
 	public int positiony;
-	character player;
-	int direction;
+	public character player;
+	public int direction;
 	public string state;
-	int time;
-	map dmap;
+	public int time;
+	public map dmap;
 	// Use this for initialization
 	void Start () {
 		direction = 0;
@@ -58,7 +58,7 @@ public class enemy : MonoBehaviour {
 			}
 		}
 	}
-	public void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine) {
+	public virtual void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine) {
 		if (state != "dead") {
 			move ();
 			if (positionx == player.positionx && positiony == player.positiony)
@@ -70,7 +70,7 @@ public class enemy : MonoBehaviour {
 			}
 		}
 	}
-	void move(){
+	public virtual void move(){
 		direction = Random.Range (0, 4);
 		switch (direction) { 
 		case 0 :
@@ -111,7 +111,7 @@ public class enemy : MonoBehaviour {
 		}
 		}
 	}
-	public void attack(){
+	public virtual void attack(){
 		player.state="dead";
 	}
 }
