@@ -54,24 +54,28 @@ public class mikumiku : mine {
 			}
 			plusturn=0;
 		}
-		enemycheck (enemies,nowenemy);
+		enemycheck (enemies,mines,nowenemy,nowmine);
 	}
 	public override void explosiontrigger(){
-		state="explosion";
-		dmap.minenumber [2]--;
-		int[,] explosions= new int[9,2];
-		for (int y=0; y<3; y++) {
-			for (int x=0; x<3; x++) {
-				explosions [3*y+x, 0] = positionx+x-1;
-				explosions [3*y+x, 1] = positiony+y-1;
+		if (state != "explosion") {
+			state = "explosion";
+			dmap.minenumber [2]--;
+			int[,] explosions = new int[9, 2];
+			for (int y=0; y<3; y++) {
+				for (int x=0; x<3; x++) {
+					explosions [3 * y + x, 0] = positionx + x - 1;
+					explosions [3 * y + x, 1] = positiony + y - 1;
+				}
 			}
+			GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions, 9);
+			GameObject.Destroy (this.gameObject);
 		}
-		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,9);
-		GameObject.Destroy(this.gameObject);
 	}
 	public override void delete(){
-		state="explosion";
-		dmap.minenumber [2]--;
-		GameObject.Destroy(this.gameObject);
+		if (state != "explosion") {
+			state = "explosion";
+			dmap.minenumber [2]--;
+			GameObject.Destroy (this.gameObject);
+		}
 	}
 }

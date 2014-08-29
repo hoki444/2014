@@ -8,12 +8,7 @@ public class bi : enemy {
 			move ();
 			if (positionx == player.positionx && positiony == player.positiony)
 				attack ();
-			for (int ind=0; ind<nowmine; ind++) {
-				if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
-					mines [ind].delete ();
-					mineeatcounter++;
-				}
-			}
+			minecheck(mines,nowmine);
 			if(mineeatcounter>=3){
 				mineeatcounter=0;
 				GameObject.Find ("Main Camera").GetComponent<game> ().biexplosion();
@@ -21,6 +16,14 @@ public class bi : enemy {
 		} else if (state == "stun") {
 			if(stunturn==dmap.turn)
 				state="stand";
+		}
+	}
+	public override void minecheck(mine[] mines,int nowmine){
+		for (int ind=0; ind<nowmine; ind++) {
+			if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
+				mines [ind].delete ();
+				mineeatcounter++;
+			}
 		}
 	}
 	public override void attack(){

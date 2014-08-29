@@ -105,50 +105,54 @@ public class LOLingmine : mine {
 			}
 			moveturn=0;
 		}
-		enemycheck (enemies,nowenemy);
+		enemycheck (enemies,mines,nowenemy,nowmine);
 	}
 	public override void explosiontrigger(){
-		state="explosion";
-		dmap.minenumber [1]--;
-		int[,] explosions= new int[3,2];
-		for (int ind=0; ind<3; ind++) {
-			switch (direction) { 
-			case 0 :
-			{
-				explosions [ind, 0] = positionx+ind;
-				explosions [ind, 1] = positiony;
-				break;
+		if (state != "explosion") {
+			state = "explosion";
+			dmap.minenumber [1]--;
+			int[,] explosions = new int[3, 2];
+			for (int ind=0; ind<3; ind++) {
+				switch (direction) { 
+				case 0:
+				{
+					explosions [ind, 0] = positionx + ind;
+					explosions [ind, 1] = positiony;
+					break;
+				}
+				case 1:
+				{
+					explosions [ind, 0] = positionx - ind;
+					explosions [ind, 1] = positiony;
+					break;
+				}
+				case 2:
+				{
+					explosions [ind, 0] = positionx;
+					explosions [ind, 1] = positiony + ind;
+					break;
+				}
+				case 3:
+				{
+					explosions [ind, 0] = positionx;
+					explosions [ind, 1] = positiony - ind;
+					break;
+				}
+				default :
+				{
+					break;
+				}
+				}
 			}
-			case 1 :
-			{
-				explosions [ind, 0] = positionx-ind;
-				explosions [ind, 1] = positiony;
-				break;
-			}
-			case 2 :
-			{
-				explosions [ind, 0] = positionx;
-				explosions [ind, 1] = positiony+ind;
-				break;
-			}
-			case 3 :
-			{
-				explosions [ind, 0] = positionx;
-				explosions [ind, 1] = positiony-ind;
-				break;
-			}
-			default :
-			{
-				break;
-			}
-			}
+			GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions, 3);
+			GameObject.Destroy (this.gameObject);
 		}
-		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,3);
-		GameObject.Destroy(this.gameObject);
 	}
 	public override void delete(){
-		state="explosion";
-		dmap.minenumber [1]--;
-		GameObject.Destroy(this.gameObject);
+		if (state != "explosion") {
+			state = "explosion";
+			dmap.minenumber [1]--;
+			GameObject.Destroy (this.gameObject);
+		}
 	}
 }

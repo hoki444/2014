@@ -17,19 +17,17 @@ public class mine : MonoBehaviour {
 
 	}
 	public virtual void turnAI(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
-		enemycheck (enemies,nowenemy);
+		enemycheck (enemies,mines,nowenemy,nowmine);
 	}
-	public void enemycheck(enemy[] enemies,int nowenemy){
+	public void enemycheck(enemy[] enemies,mine[] mines,int nowenemy,int nowmine){
 		for(int ind=0;ind<nowenemy;ind++){
 			if(positionx==enemies[ind].positionx&&positiony==enemies[ind].positiony){
-				if(enemies[ind] is bi)
-					bi.mineeatcounter++;
-				else
-					explosiontrigger();
+				enemies[ind].minecheck(mines,nowmine);
 			}
 		}
 	}
 	public virtual void explosiontrigger(){
+		if (state != "explosion") {
 		state="explosion";
 		dmap.minenumber [0]--;
 		int[,] explosions= new int[1,2];
@@ -37,10 +35,13 @@ public class mine : MonoBehaviour {
 		explosions [0, 1] = positiony;
 		GameObject.Find ("Main Camera").GetComponent<game> ().deleteallunit (explosions,1);
 		GameObject.Destroy(this.gameObject);
+		}
 	}
 	public virtual void delete(){
-		state="explosion";
-		dmap.minenumber [0]--;
-		GameObject.Destroy(this.gameObject);
+		if (state != "explosion") {
+			state = "explosion";
+			dmap.minenumber [0]--;
+			GameObject.Destroy (this.gameObject);
+		}
 	}
 }

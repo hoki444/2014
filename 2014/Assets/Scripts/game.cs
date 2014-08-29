@@ -88,7 +88,8 @@ public class game : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		clearjudge ();
-		turnchange ();
+		if(!gameclear)
+			turnchange ();
 	}
 	void OnGUI()
 	{
@@ -170,18 +171,28 @@ public class game : MonoBehaviour {
 		}
 	}
 	public void biexplosion(){
+		int[,,] explosions = new int[20,9,2];
+		int explosionumber = 0;
 		for (int ind2=0; ind2<nowenemy; ind2++) {
 			if (enemies [ind2] is bi) {
-				int[,] explosions = new int[9, 2];
 				for (int y=0; y<3; y++) {
 					for (int x=0; x<3; x++) {
-						explosions [3 * y + x, 0] = enemies [ind2].positionx + x - 1;
-						explosions [3 * y + x, 1] = enemies [ind2].positiony + y - 1;
+						explosions [explosionumber,3 * y + x, 0] = enemies [ind2].positionx + x - 1;
+						explosions [explosionumber,3 * y + x, 1] = enemies [ind2].positiony + y - 1;
 					}
 				}
-				deleteallunit (explosions,9);
-				ind2=-1;
+				explosionumber++;
 			}
+		}
+		for (int ind2=0; ind2<explosionumber; ind2++) {
+			int[,] nowexplosion = new int[9,2];
+			for (int y=0; y<3; y++) {
+				for (int x=0; x<3; x++) {
+					nowexplosion [3 * y + x, 0] = explosions [ind2,3 * y + x, 0];
+					nowexplosion [3 * y + x, 1] = explosions [ind2,3 * y + x, 1];
+				}
+			}
+			deleteallunit(nowexplosion,9);
 		}
 	}
 	public void deleteallunit(int[,] explosions,int explosionnum){

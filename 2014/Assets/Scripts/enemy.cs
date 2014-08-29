@@ -64,14 +64,17 @@ public class enemy : MonoBehaviour {
 			move ();
 			if (positionx == player.positionx && positiony == player.positiony)
 				attack ();
-			for (int ind=0; ind<nowmine; ind++) {
-				if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
-					mines [ind].explosiontrigger ();
-				}
-			}
+			minecheck(mines,nowmine);
 		} else if (state == "stun") {
 			if(stunturn==dmap.turn)
 				state="stand";
+		}
+	}
+	public virtual void minecheck(mine[] mines,int nowmine){
+		for (int ind=0; ind<nowmine; ind++) {
+			if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
+				mines [ind].explosiontrigger ();
+			}
 		}
 	}
 	public virtual void move(){

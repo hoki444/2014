@@ -10,11 +10,7 @@ public class mikudayo : enemy {
 			if (positionx == player.positionx && positiony == player.positiony)
 				attack ();
 			state=tempstate;
-			for (int ind=0; ind<nowmine; ind++) {
-				if (positionx == mines [ind].positionx && positiony == mines [ind].positiony) {
-					mines [ind].explosiontrigger();
-				}
-			}
+			minecheck(mines,nowmine);
 			for (int ind=0; ind<nowenemy; ind++) {
 				if (positionx == enemies [ind].positionx && positiony == enemies [ind].positiony) {
 					enemies [ind].knuckback (direction,2,mines,nowmine);
